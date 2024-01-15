@@ -1,0 +1,12 @@
+
+<div class="flex flex-col items-center justify-center p-2 h-full">
+    <div *ngIf="this.loggedUser.name" class="grid grid-cols-4">
+        <app-organizer-card *ngFor="let organizer of organizers" [loggedUser]="loggedUser" [organizer]="organizer"></app-organizer-card>
+        <div *ngIf="organizers.length === 0">No organizers present!</div>
+    </div>
+    <button *ngIf="this.loggedUser.name.length === 0" 
+        class="p-2 border-2 border-solid rounded-2xl"
+        (click) = "handleGoogleSignIn()">
+        Sign in with Google
+    </button>
+</div>

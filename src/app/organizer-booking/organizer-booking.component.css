@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:host{
+    width: 70%;
+    height: 100%;
+}
+
+.active{
+    color: white;
+    background: #000;
+}

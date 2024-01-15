@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:host{
+    position: fixed;
+    height: 7%;
+    width: 100%;
+}

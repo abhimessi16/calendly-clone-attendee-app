@@ -1,0 +1,33 @@
+
+<div class="flex flex-col items-center justify-evenly h-full">
+	<a class="p-2 border-2 border-solid rounded-2xl m-2 h-[20vh]"
+	routerLink="">Go back to organizers list</a>
+
+	<div class="flex flex-row p-2 w-full items-center justify-center h-[500px]">
+		<div class="">
+			<mat-form-field>
+				<mat-label>Choose a date</mat-label>
+				<input matInput [matDatepicker]="picker" (dateChange)="handleDateChange($event)">
+				<mat-hint>MM/DD/YYYY</mat-hint>
+				<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+			<!-- <mat-card class="demo-inline-calendar-card"> -->
+				<!-- <mat-calendar #calendar [(selected)]="this.date" (selectedChange)="handleDateChange($event)"></mat-calendar> -->
+			<!-- </mat-card> -->
+		</div>
+		<!-- <button (click)="printDate()">Click</button> -->
+		<div class="grid grid-cols-4 w-[50%]">
+			<button *ngFor="let availableSlotDetail of this.slotsAvailableDetails" 
+			class="p-2 border-2 border-solid rounded-2xl disabled:bg-gray-400 
+			disabled:text-black font-medium"
+			[disabled]="!availableSlotDetail.slot.isAvailable"
+			[class.active]="availableSlotDetail.isActive"
+			(click)="handleSlotSelect(availableSlotDetail)">
+				{{availableSlotDetail.slot.start}}:00 - {{availableSlotDetail.slot.end}}:00
+			</button>
+		</div>
+	</div>
+	<button class="p-2 border-2 border-solid rounded-2xl"
+	(click)="handleBookSlotClick()">Book slot</button>
+</div>
